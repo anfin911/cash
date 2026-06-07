@@ -1,0 +1,302 @@
+
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+:root{--n:#0f2744;--pos:#059669;--neg:#dc2626;--ff:'IBM Plex Sans',system-ui,sans-serif;--mo:'IBM Plex Mono',monospace;}
+.wr{font-family:var(--ff);background:var(--color-background-tertiary);color:var(--color-text-primary);}
+.hdr{background:var(--n);color:#fff;padding:11px 20px;display:flex;align-items:center;justify-content:space-between;}
+.hl{display:flex;align-items:center;gap:10px;}
+.hic{width:32px;height:32px;background:rgba(255,255,255,0.12);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:600;flex-shrink:0;}
+.horg{font-size:15px;font-weight:600;}.hsub{font-size:11px;opacity:.6;}
+.hr{display:flex;align-items:center;gap:8px;}
+.hdt{font-size:11px;opacity:.7;}
+.bup{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);color:#fff;padding:5px 11px;border-radius:6px;cursor:pointer;font-size:11px;font-family:var(--ff);display:flex;align-items:center;gap:4px;}
+.bup:hover{background:rgba(255,255,255,0.22);}
+.tabs{background:var(--color-background-primary);border-bottom:0.5px solid var(--color-border-tertiary);padding:0 20px;display:flex;overflow-x:auto;}
+.tab{padding:9px 12px;border:none;border-bottom:2px solid transparent;background:none;cursor:pointer;font-size:12px;font-family:var(--ff);color:var(--color-text-secondary);display:flex;align-items:center;gap:4px;white-space:nowrap;}
+.tab.on{color:var(--n);border-bottom-color:var(--n);font-weight:500;}
+.tx{color:var(--color-border-primary);font-size:14px;line-height:1;}.tx:hover{color:var(--neg);}
+.mn{padding:14px 20px 28px;}
+.dz{border:1.5px dashed var(--color-border-secondary);border-radius:8px;padding:8px 16px;margin-bottom:12px;display:flex;align-items:center;gap:7px;color:var(--color-text-secondary);font-size:11px;cursor:pointer;justify-content:center;}
+.dz.act{border-color:#2563eb;background:var(--color-background-info);color:var(--color-text-info);}
+.dz i{font-size:15px;}
+.ld{display:flex;align-items:center;gap:8px;background:var(--color-background-info);border:0.5px solid var(--color-border-info);border-radius:8px;padding:9px 13px;margin-bottom:12px;font-size:12px;color:var(--color-text-info);}
+.sp{width:14px;height:14px;border:2px solid var(--color-border-info);border-top-color:var(--color-text-info);border-radius:50%;animation:rot .7s linear infinite;flex-shrink:0;}
+@keyframes rot{to{transform:rotate(360deg);}}
+.er{display:flex;align-items:center;justify-content:space-between;background:var(--color-background-danger);border:0.5px solid var(--color-border-danger);border-radius:8px;padding:9px 13px;margin-bottom:12px;font-size:12px;color:var(--color-text-danger);}
+.erx{background:none;border:none;cursor:pointer;color:var(--color-text-danger);font-size:15px;}
+.cards{display:grid;grid-template-columns:1.35fr 1fr 1fr 1fr;gap:10px;margin-bottom:14px;}
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:13px 15px;}
+.card.dk{background:var(--n);border-color:transparent;color:#fff;}
+.clb{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.4px;opacity:.6;margin-bottom:5px;}
+.cv{font-family:var(--mo);font-size:12.5px;margin-bottom:9px;line-height:1.3;word-break:break-all;}
+.card.dk .cv{font-size:16.5px;}
+.cds{display:flex;gap:12px;}
+.cdl{font-size:11px;text-transform:uppercase;letter-spacing:.3px;opacity:.5;margin-bottom:1px;}
+.cdv{font-size:11px;font-weight:500;}
+.pos{color:var(--pos);}.neg{color:var(--neg);}.dkp{color:#6ee7b7;}.dkn{color:#fca5a5;}.mu{color:var(--color-text-secondary);}
+.cwp{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:13px 15px;margin-bottom:14px;}
+.ctt{font-size:12px;font-weight:500;margin-bottom:10px;}
+.leg{display:flex;gap:14px;justify-content:center;margin-top:7px;}
+.li{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--color-text-secondary);}
+.ll{width:15px;height:2px;}
+.tw{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden;margin-bottom:14px;}
+.th{padding:11px 14px;border-bottom:0.5px solid var(--color-border-tertiary);display:flex;align-items:flex-start;justify-content:space-between;}
+.tt{font-size:12px;font-weight:500;}.tss{font-size:11px;color:var(--color-text-secondary);margin-top:1px;}
+.ttot{font-family:var(--mo);font-size:11px;font-weight:500;white-space:nowrap;}
+.tscr{overflow-y:auto;max-height:340px;}
+table{width:100%;border-collapse:collapse;}
+thead{position:sticky;top:0;z-index:1;}
+th{background:var(--color-background-secondary);padding:6px 10px;text-align:left;font-size:11px;font-weight:500;color:var(--color-text-secondary);border-bottom:0.5px solid var(--color-border-tertiary);white-space:nowrap;}
+td{padding:5px 10px;font-size:11px;border-bottom:0.5px solid var(--color-border-tertiary);}
+.r{text-align:right;}.mo{font-family:var(--mo);}
+.lv0{font-weight:500;}
+.lv1 td:first-child{padding-left:20px;color:var(--color-text-secondary);}
+.lv2 td:first-child{padding-left:36px;font-size:11px;}
+.lv2 td{font-size:11px;color:var(--color-text-secondary);}
+.lv2.chg td{color:var(--color-text-primary);}
+tfoot td{font-size:11px;font-weight:500;background:var(--color-background-secondary);border-top:0.5px solid var(--color-border-secondary);}
+.tft td{background:var(--n);color:#fff;font-weight:600;}
+.dep-hdr td{background:var(--color-background-secondary);border-top:1px solid var(--color-border-secondary);}
+.dep-item td{background:var(--color-background-secondary);}
+.dep-item td:first-child{padding-left:20px;color:var(--color-text-secondary);font-weight:400;}
+.pill{display:inline-block;padding:2px 6px;border-radius:10px;font-size:11px;font-weight:500;}
+.pg{background:#d1fae5;color:#065f46;}.pa{background:#fef3c7;color:#78350f;}
+</style>
+<h2 class="sr-only">ООО «РКС-НР» — ежедневный мониторинг остатков денежных средств на расчётных счетах</h2>
+<div class="wr">
+<div class="hdr">
+  <div class="hl">
+    <div class="hic" aria-hidden="true">₽</div>
+    <div><div class="horg">ООО «РКС-НР»</div><div class="hsub">Мониторинг остатков денежных средств</div></div>
+  </div>
+  <div class="hr">
+    <span class="hdt" id="hdt"></span>
+    <button class="bup" onclick="document.getElementById('fi').click()"><i class="ti ti-upload" aria-hidden="true"></i> Загрузить отчёт</button>
+    <input id="fi" type="file" style="display:none" accept=".pdf,image/*" onchange="onF(event)">
+  </div>
+</div>
+<div class="tabs" id="tabs"></div>
+<div class="mn">
+  <div id="ld" class="ld" style="display:none"><div class="sp"></div><span>ИИ анализирует файл, пожалуйста подождите...</span></div>
+  <div id="er" class="er" style="display:none"><span id="em"></span><button class="erx" onclick="document.getElementById('er').style.display='none'">×</button></div>
+  <div class="dz" id="dz" onclick="document.getElementById('fi').click()">
+    <i class="ti ti-file-upload" aria-hidden="true"></i>
+    Перетащите PDF или скриншот сюда, либо нажмите для выбора файла
+  </div>
+  <div id="cnt" style="display:none">
+    <div class="cards" id="cards">
+      <div class="card"></div><div class="card"></div><div class="card"></div><div class="card"></div>
+    </div>
+    <div class="cwp" id="cwp" style="display:none">
+      <div class="ctt">Динамика денежных средств</div>
+      <canvas id="ch" height="60"></canvas>
+      <div class="leg">
+        <div class="li"><div class="ll" style="background:#0f2744"></div>Итого ДС</div>
+        <div class="li"><div class="ll" style="background:#2563eb;border-top:1.5px dashed #2563eb"></div>Расчётные счета</div>
+      </div>
+    </div>
+    <div class="tw">
+      <div class="th"><div><div class="tt">Расчётные счета и депозиты</div><div class="tss" id="adt"></div></div></div>
+      <div class="tscr">
+        <table id="at">
+          <thead><tr>
+            <th>Счёт / Проект</th>
+            <th class="r" style="width:150px">Сумма, ₽</th>
+            <th class="r" style="width:72px">Δ день</th>
+            <th class="r" style="width:72px">Δ мес.</th>
+          </tr></thead>
+          <tbody></tbody>
+          <tfoot></tfoot>
+        </table>
+      </div>
+    </div>
+    <div class="tw">
+      <div class="th">
+        <div><div class="tt">Операции на казначейских счетах</div><div class="tss">Реестр в работе</div></div>
+        <div class="ttot mo" id="ott"></div>
+      </div>
+      <div class="tscr">
+        <table id="op">
+          <thead><tr>
+            <th style="width:80px">Тип</th><th style="width:72px">Дата</th><th style="width:42px">№</th>
+            <th style="width:58px">Договор</th><th class="r" style="width:118px">Сумма, ₽</th>
+            <th>Субподрядчик</th><th style="width:108px">Статус</th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+const DI=[['ПАО Совкомбанк','14.08.2027',54280800],['ПАО Совкомбанк','14.06.2027',15422500],['ПАО Совкомбанк','14.06.2027',15920000],['ПАО Совкомбанк','14.06.2027',14676250],['ПАО Совкомбанк','06.07.2027',31990000],['ПАО Совкомбанк','06.07.2027',30990000],['ЦМРБанк','30.06.2026',109800000]];
+const P01=[['1-РР',650413656.05],['2-РР',0],['3-РР',119957249.97],['4-РР',472430437.29],['5-РР',322024657.82],['6-РР',175267454.88],['10-РР',52000000],['11-РР',108352000],['12-РР',60755556.35],['13-РР',40000000],['28-РР',1162417851.37],['32-РР',112974840.35],['34-РР',0],['64-РР',169737934.72],['210-РР',164154816],['1-РРФС',254972672.87],['77-РР',641136037.06],['2-БГ',1601458473.76],['238-РР',338809199.63],['239-РР',92535000],['240-РР',88057500],['241-РР',95520000],['248-РР',92970000],['249-РР',95970000]];
+const P02=[['1-РР',650413656.05],['2-РР',0],['3-РР',116190394.85],['4-РР',472430437.29],['5-РР',278527086.70],['6-РР',175267454.88],['10-РР',52000000],['11-РР',108352000],['12-РР',60755556.35],['13-РР',35766717.87],['28-РР',1119142852.17],['32-РР',112974840.35],['34-РР',0],['64-РР',169737934.72],['210-РР',164154816],['1-РРФС',254972672.87],['77-РР',641136037.06],['2-БГ',1518688228.56],['238-РР',209096000],['239-РР',92535000],['240-РР',88057500],['241-РР',95520000],['248-РР',92970000],['249-РР',95970000]];
+const P04=[['1-РР',640413656.05],['2-РР',0],['3-РР',116190394.85],['4-РР',334769333.98],['5-РР',278527086.70],['6-РР',175267454.88],['10-РР',52000000],['11-РР',108352000],['12-РР',60755556.35],['13-РР',35766717.87],['28-РР',1100300778.55],['32-РР',112974840.35],['34-РР',0],['64-РР',169737934.72],['210-РР',164154816],['1-РРФС',254972672.87],['77-РР',641136037.06],['2-БГ',1378688228.56],['238-РР',209096000],['239-РР',92535000],['240-РР',88057500],['241-РР',95520000],['248-РР',92970000],['249-РР',95970000]];
+
+const mkSA=(treas,udm,eppk,proj,sber,cmr,psb_goz,psb_pao,total)=>({treas,udm,eppk,projects:proj,sber,cmr,psb_goz,psb_pao,total});
+const mkDep=(total,items)=>({total,items});
+
+const PL={
+'2026-06-01':{sa:mkSA(6937875549.01,25960210.89,6911915338.12,P01,361998.65,360208722.64,17199030.68,2495333.84,7318140634.82),dep:mkDep(273079550,DI),ops:[{type:'Платёжное поручение',date:'22.05.2026',doc:'1422',contract:'5-РР',amt:2759949.41,sub:'ЮИС (выполнение)',status:'Исполнение'},{type:'Платёжное поручение',date:'25.05.2026',doc:'1424',contract:'2-БГ',amt:15000000,sub:'Сочи (аванс)',status:'Исполнение'},{type:'Платёжное поручение',date:'26.05.2026',doc:'1427',contract:'28-РР',amt:40000000,sub:'Искра (аванс)',status:'Исполнение'},{type:'Платёжное поручение',date:'26.05.2026',doc:'1428',contract:'3-РР',amt:3766855.12,sub:'Искра (выполнение)',status:'Исполнение'},{type:'Платёжное поручение',date:'26.05.2026',doc:'1429',contract:'13-РР',amt:4233282.13,sub:'Искра (выполнение)',status:'Исполнение'},{type:'Платёжное поручение',date:'26.05.2026',doc:'1430',contract:'28-РР',amt:3274999.20,sub:'Искра (выполнение)',status:'Исполнение'},{type:'Платёжное поручение',date:'26.05.2026',doc:'1431',contract:'238-РР',amt:129720000,sub:'Стройиндустрия (аванс)',status:'Исполнение'},{type:'Платёжное поручение',date:'27.05.2026',doc:'1432',contract:'2-БГ',amt:100000000,sub:'Искра (аванс)',status:'Исполнение'},{type:'Платёжное поручение',date:'28.05.2026',doc:'1434',contract:'5-РР',amt:40737621.71,sub:'Раминжиниринг (выполнение)',status:'Исполнение'},{type:'Сведения',date:'25.05.2026',doc:'1423',contract:'4-РР',amt:128721291.36,sub:'ФКР МО (выполнение)',status:'На согласовании ППК'},{type:'Сведения',date:'27.05.2026',doc:'1433',contract:'2-БГ',amt:70000000,sub:'КПЦ (аванс)',status:'На согласовании ППК'},{type:'Сведения',date:'27.05.2026',doc:'1433',contract:'2-БГ',amt:50000000,sub:'Прокат-Сервис (аванс)',status:'На согласовании ППК'},{type:'Сведения',date:'28.05.2026',doc:'1436',contract:'28-РР',amt:18842073.62,sub:'ВТК (выполнение)',status:'На согласовании ППК'},{type:'Сведения',date:'01.06.2026',doc:'1437',contract:'1-РР',amt:10000000,sub:'МСК-Гарант (аванс)',status:'На согласовании ППК'},{type:'Сведения',date:'01.06.2026',doc:'1438',contract:'77-РРК',amt:25000000,sub:'Сочи (аванс)',status:'На согласовании ППК'},{type:'Сведения',date:'01.06.2026',doc:'1439',contract:'2-БГ',amt:20000000,sub:'Раминжиниринг (аванс)',status:'На согласовании ППК'}],ops_total:662056072.55},
+'2026-06-02':{sa:mkSA(6630619396.61,25960210.89,6604659185.72,P02,363277.89,360187917.64,17199030.68,5808078.11,7014177700.93),dep:mkDep(273079550,DI),ops:[{type:'Платёжное поручение',date:'25.05.2026',doc:'1423',contract:'4-РР',amt:128721291.36,sub:'ФКР МО (выполнение)',status:'Исполнение'},{type:'Платёжное поручение',date:'27.05.2026',doc:'1433',contract:'2-БГ',amt:70000000,sub:'КПЦ (аванс)',status:'Исполнение'},{type:'Платёжное поручение',date:'27.05.2026',doc:'1433',contract:'2-БГ',amt:50000000,sub:'Прокат-Сервис (аванс)',status:'Исполнение'},{type:'Платёжное поручение',date:'28.05.2026',doc:'1436',contract:'28-РР',amt:18842073.62,sub:'ВТК (выполнение)',status:'Исполнение'},{type:'Сведения',date:'01.06.2026',doc:'1437',contract:'1-РР',amt:10000000,sub:'МСК-Гарант (аванс)',status:'На согласовании ППК'},{type:'Сведения',date:'01.06.2026',doc:'1438',contract:'77-РРК',amt:25000000,sub:'Сочи (аванс)',status:'На согласовании ППК'},{type:'Сведения',date:'01.06.2026',doc:'1439',contract:'2-БГ',amt:20000000,sub:'Раминжиниринг (аванс)',status:'На согласовании ППК'},{type:'Сведения',date:'01.06.2026',doc:'1440',contract:'4-РР',amt:8939811.95,sub:'РСМ (выполнение)',status:'На согласовании ППК'}],ops_total:331503176.93},
+'2026-06-04':{sa:mkSA(6323534333.49,25378324.70,6298156008.79,P04,296703.84,368189143.64,17199030.68,3455867.86,6712675079.51),dep:mkDep(273079550,DI),ops:[{type:'Сведения',date:'01.06.2026',doc:'1439',contract:'77-РР',amt:25000000,sub:'Сочи (аванс)',status:'На согласовании ППК'},{type:'Сведения',date:'02.06.2026',doc:'1441',contract:'77-РР',amt:23907432.90,sub:'ФОТ (май)',status:'На согласовании ППК'},{type:'Сведения',date:'03.06.2026',doc:'1444',contract:'28-РР',amt:6580408.35,sub:'Донецкэнерго (аванс)',status:'На согласовании ППК'},{type:'Сведения',date:'03.06.2026',doc:'1446',contract:'2-БГ',amt:80000000,sub:'Теплодом138 (аванс)',status:'На согласовании ППК'}],ops_total:135487841.25},
+'2026-06-05':{sa:mkSA(6323534333.49,25378324.70,6298156008.79,P04,109582.48,366009086.44,17199030.68,2532233.18,6709384266.27),dep:mkDep(273079550,DI),ops:[{type:'Сведения',date:'01.06.2026',doc:'1439',contract:'77-РР',amt:25000000,sub:'Сочи (аванс)',status:'На согласовании ППК'},{type:'Сведения',date:'02.06.2026',doc:'1441',contract:'77-РР',amt:23907432.90,sub:'ФОТ (май)',status:'На согласовании ППК'},{type:'Сведения',date:'03.06.2026',doc:'1444',contract:'28-РР',amt:6580408.35,sub:'Донецкэнерго (аванс)',status:'На согласовании ППК'},{type:'Сведения',date:'03.06.2026',doc:'1446',contract:'2-БГ',amt:80000000,sub:'Теплодом138 (аванс)',status:'На согласовании ППК'},{type:'Сведения',date:'04.06.2026',doc:'1447',contract:'77-РР',amt:15000000,sub:'ФКР МО (аванс)',status:'На согласовании ППК'},{type:'Сведения',date:'04.06.2026',doc:'1448',contract:'28-РР',amt:163517583.39,sub:'ФКР МО (выполнение)',status:'На согласовании ППК'}],ops_total:314005424.64}
+};
+
+let days={},dates=[],sel=null,chart=null;
+const N=(v,d=2)=>v==null?'—':v.toLocaleString('ru-RU',{minimumFractionDigits:d,maximumFractionDigits:d});
+const M=v=>(Math.abs(v)/1e6).toFixed(1).replace('.',',');
+const tDS=d=>d.sa.total+d.dep.total;
+const iso=dmy=>{const[d,m,y]=dmy.split('.');return`${y}-${m}-${d}`;};
+const fmt=s=>{const[y,m,d]=s.split('-');return`${d}.${m}.${y}`;};
+const fmtS=s=>{const[y,m,d]=s.split('-');return`${d}.${m}`;};
+const pA=(day,code)=>(day?.sa?.projects||[]).find(([c])=>c===code)?.[1]??null;
+
+async function init(){
+  let st={};
+  try{const k=await window.storage.list('rks3:d:');if(k?.keys)for(const x of k.keys){try{const r=await window.storage.get(x);if(r?.value)st[x.replace('rks3:d:','')]=JSON.parse(r.value);}catch{}}}catch{}
+  days={...PL,...st};dates=Object.keys(days).sort();sel=dates[dates.length-1]||null;render();
+}
+
+function render(){
+  const cur=sel&&days[sel]?days[sel]:null;
+  document.getElementById('cnt').style.display=cur?'':'none';
+  document.getElementById('hdt').textContent=sel?'Актуально на: '+fmt(sel):'';
+  document.getElementById('tabs').innerHTML=dates.map(d=>`<button class="tab${d===sel?' on':''}" onclick="selD('${d}')">${fmt(d)}${!PL[d]?`<span class="tx" onclick="delD(event,'${d}')">×</span>`:''}</button>`).join('');
+  if(!cur)return;
+
+  const idx=dates.indexOf(sel);
+  const prev=idx>0?days[dates[idx-1]]:null;
+  const[sy,sm]=sel.split('-');
+  const md=dates.filter(d=>d.startsWith(sy+'-'+sm));
+  const ms=md[0]!==sel?days[md[0]]:null;
+  const dv=fn=>prev?fn(cur)-fn(prev):null;
+  const dm=fn=>ms?fn(cur)-fn(ms):null;
+
+  const dvHtml=(v,dk)=>{
+    if(v==null)return`<span class="mu">—</span>`;
+    const cls=v>=0?(dk?'dkp':'pos'):(dk?'dkn':'neg');
+    return`<span class="${cls}">${v>0?'▲':v<0?'▼':'='} ${M(v)}</span>`;
+  };
+  const dvS=v=>{
+    if(v==null)return`<span class="mu">—</span>`;
+    const cls=v>=0?'pos':'neg';
+    return`<span class="${cls}">${v>0?'+':''}${M(v)}</span>`;
+  };
+
+  // Cards
+  [{lbl:'Итого денежные средства',fn:tDS,dk:true},{lbl:'Расчётные счета',fn:d=>d.sa.total,dk:false},{lbl:'Депозиты',fn:d=>d.dep.total,dk:false},{lbl:'Операции в работе',fn:d=>d.ops_total,dk:false}]
+  .forEach(({lbl,fn,dk},i)=>{
+    const el=document.querySelectorAll('.card')[i];
+    el.className='card'+(dk?' dk':'');
+    el.innerHTML=`<div class="clb">${lbl}</div><div class="cv">${N(fn(cur))} ₽</div><div class="cds"><div><div class="cdl">Δ пред. день</div><div class="cdv">${dvHtml(dv(fn),dk)}</div></div><div><div class="cdl">Δ нач. месяца</div><div class="cdv">${dvHtml(dm(fn),dk)}</div></div></div>`;
+  });
+
+  // Chart
+  const cwp=document.getElementById('cwp');
+  if(dates.length>=2){
+    cwp.style.display='';
+    if(chart){chart.destroy();chart=null;}
+    chart=new Chart(document.getElementById('ch'),{type:'line',data:{labels:dates.map(fmtS),datasets:[{label:'Итого ДС',data:dates.map(d=>days[d]?tDS(days[d]):null),borderColor:'#0f2744',backgroundColor:'transparent',borderWidth:2.5,pointRadius:4,pointBackgroundColor:'#0f2744',tension:0.35},{label:'Расч. счета',data:dates.map(d=>days[d]?days[d].sa.total:null),borderColor:'#2563eb',backgroundColor:'transparent',borderWidth:1.5,borderDash:[5,3],pointRadius:3,pointBackgroundColor:'#2563eb',tension:0.35}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${N(c.parsed.y,0)} ₽`}}},scales:{x:{grid:{display:false},ticks:{font:{size:11},color:'#94a3b8'},border:{display:false}},y:{grid:{color:'rgba(128,128,128,0.1)'},ticks:{font:{size:11},color:'#94a3b8',callback:v=>`${(v/1e9).toFixed(2)} млрд`},border:{display:false}}}}});
+  }else cwp.style.display='none';
+
+  // Account table
+  document.getElementById('adt').textContent=fmt(sel);
+  const eppk=cur.sa.eppk||(cur.sa.treas-cur.sa.udm);
+  const eppkP=prev?(prev.sa.eppk||(prev.sa.treas-prev.sa.udm)):null;
+  const eppkMs=ms?(ms.sa.eppk||(ms.sa.treas-ms.sa.udm)):null;
+
+  let tbody='';
+  // Казначейские
+  tbody+=`<tr class="lv0"><td>Казначейские счета, всего</td><td class="r mo">${N(cur.sa.treas)}</td><td class="r">${dvS(dv(d=>d.sa.treas))}</td><td class="r">${dvS(dm(d=>d.sa.treas))}</td></tr>`;
+  tbody+=`<tr class="lv1"><td>в т.ч. УДМУРТСКАЯ РЕСПУБЛИКА</td><td class="r mo">${N(cur.sa.udm)}</td><td class="r">${dvS(dv(d=>d.sa.udm))}</td><td class="r">${dvS(dm(d=>d.sa.udm))}</td></tr>`;
+  tbody+=`<tr class="lv1"><td>в т.ч. Единый заказчик ППК</td><td class="r mo">${N(eppk)}</td><td class="r">${dvS(eppkP!=null?eppk-eppkP:null)}</td><td class="r">${dvS(eppkMs!=null?eppk-eppkMs:null)}</td></tr>`;
+
+  if(cur.sa.projects){
+    for(const[code,amt] of cur.sa.projects){
+      const prevAmt=pA(prev,code);
+      const delta=prevAmt!=null?amt-prevAmt:null;
+      const hasChg=delta!=null&&delta!==0;
+      tbody+=`<tr class="lv2${hasChg?' chg':''}"><td>${code}</td><td class="r mo">${N(amt)}</td><td class="r">${delta!=null&&delta!==0?dvS(delta):'<span class="mu">—</span>'}</td><td class="r"></td></tr>`;
+    }
+  }
+  // Bank accounts
+  [['ПАО Сбербанк',d=>d.sa.sber],['ЦМРБанк (ООО)',d=>d.sa.cmr],['Промсвязьбанк (ГОЗ)',d=>d.sa.psb_goz],['ПРОМСВЯЗЬБАНК ПАО',d=>d.sa.psb_pao]]
+  .forEach(([lbl,fn])=>{
+    tbody+=`<tr class="lv0"><td>${lbl}</td><td class="r mo">${N(fn(cur))}</td><td class="r">${dvS(dv(fn))}</td><td class="r">${dvS(dm(fn))}</td></tr>`;
+  });
+  document.querySelector('#at tbody').innerHTML=tbody;
+
+  // Footer
+  let tfoot='';
+  tfoot+=`<tr><td>Итого счета</td><td class="r mo">${N(cur.sa.total)}</td><td class="r">${dvS(dv(d=>d.sa.total))}</td><td class="r">${dvS(dm(d=>d.sa.total))}</td></tr>`;
+  tfoot+=`<tr class="dep-hdr"><td style="font-weight:500">+ Депозиты</td><td class="r mo">${N(cur.dep.total)}</td><td class="r">${dvS(dv(d=>d.dep.total))}</td><td class="r">${dvS(dm(d=>d.dep.total))}</td></tr>`;
+  if(cur.dep.items){
+    // Group Sovkombank deposits with same term label
+    const grouped={};
+    for(const[bank,term,amt] of cur.dep.items){
+      const key=`${bank}|${term}`;
+      grouped[key]=(grouped[key]||0)+amt;
+    }
+    // Build unique rows
+    const seen=new Set();
+    for(const[bank,term,amt] of cur.dep.items){
+      const key=`${bank}|${term}`;
+      const label=`${bank} (до ${term})`;
+      if(grouped[key]&&grouped[key]!==amt){
+        if(!seen.has(key)){seen.add(key);tfoot+=`<tr class="dep-item"><td>${label}</td><td class="r mo">${N(grouped[key])}</td><td></td><td></td></tr>`;}
+      }else{
+        tfoot+=`<tr class="dep-item"><td>${label}</td><td class="r mo">${N(amt)}</td><td></td><td></td></tr>`;
+      }
+    }
+  }
+  tfoot+=`<tr class="tft"><td>ИТОГО ДС</td><td class="r mo">${N(tDS(cur))}</td><td class="r">${dvS(dv(tDS))}</td><td class="r">${dvS(dm(tDS))}</td></tr>`;
+  document.querySelector('#at tfoot').innerHTML=tfoot;
+
+  // Ops table
+  document.getElementById('ott').textContent='Итого: '+N(cur.ops_total)+' ₽';
+  document.querySelector('#op tbody').innerHTML=(cur.ops||[]).map(op=>`<tr><td style="color:var(--color-text-secondary)">${op.type||''}</td><td class="mo" style="white-space:nowrap">${op.date||''}</td><td class="mo" style="color:var(--color-text-secondary)">${op.doc||''}</td><td style="font-weight:500;white-space:nowrap">${op.contract||''}</td><td class="r mo" style="white-space:nowrap">${N(op.amt)}</td><td style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:0">${op.sub||''}</td><td><span class="pill ${(op.status||'').includes('Исполнение')?'pg':'pa'}">${op.status||''}</span></td></tr>`).join('');
+}
+
+function selD(d){sel=d;render();}
+async function delD(e,d){
+  e.stopPropagation();
+  if(!confirm('Удалить запись за '+fmt(d)+'?'))return;
+  try{await window.storage.delete('rks3:d:'+d);}catch{}
+  delete days[d];dates=dates.filter(x=>x!==d);
+  if(sel===d)sel=dates[dates.length-1]||null;render();
+}
+function onF(e){const f=e.target.files[0];e.target.value='';if(f)parse(f);}
+async function parse(file){
+  document.getElementById('ld').style.display='';document.getElementById('er').style.display='none';
+  try{
+    const b64=await new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result.split(',')[1]);r.onerror=rej;r.readAsDataURL(file);});
+    const pdf=file.type==='application/pdf';
+    const prompt=`Извлеки данные из ежедневного отчёта об остатках ДС ООО "РКС-НР". Верни ТОЛЬКО JSON без markdown:\n{"date":"ДД.ММ.ГГГГ","sa":{"treas":0,"udm":0,"eppk":0,"projects":[["1-РР",0]],"sber":0,"cmr":0,"psb_goz":0,"psb_pao":0,"total":0},"dep":{"total":0,"items":[["Банк","ДД.ММ.ГГГГ",0]]},"ops":[{"type":"","date":"ДД.ММ.ГГГГ","doc":"","contract":"","amt":0,"sub":"","status":""}],"ops_total":0}\nsa.treas — Казначейские счета всего; sa.udm — УДМУРТСКАЯ РЕСПУБЛИКА; sa.eppk — Единый заказчик ППК; sa.projects — массив [код,сумма] по каждому РР; sa.total — Итого расч. счета; dep.total — Депозиты итого; dep.items — массив [банк,срокДД.ММ.ГГГГ,сумма]. Числа без разделителей тысяч, точка как дробный разделитель.`;
+    const content=pdf?[{type:'document',source:{type:'base64',media_type:'application/pdf',data:b64}},{type:'text',text:prompt}]:[{type:'image',source:{type:'base64',media_type:file.type||'image/png',data:b64}},{type:'text',text:prompt}];
+    const rsp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:3000,messages:[{role:'user',content}]})});
+    const data=await rsp.json();
+    if(data.error)throw new Error(data.error.message);
+    const txt=(data.content||[]).map(b=>b.text||'').join('');
+    const f=txt.indexOf('{'),l=txt.lastIndexOf('}');
+    if(f<0||l<0)throw new Error('JSON не найден в ответе');
+    const parsed=JSON.parse(txt.slice(f,l+1));
+    const dk=iso(parsed.date);
+    await window.storage.set('rks3:d:'+dk,JSON.stringify(parsed));
+    days[dk]=parsed;dates=[...new Set([...dates,dk])].sort();sel=dk;render();
+  }catch(e){
+    document.getElementById('em').textContent='Ошибка: '+(e.message||'не удалось разобрать файл');
+    document.getElementById('er').style.display='';
+  }finally{document.getElementById('ld').style.display='none';}
+}
+const dz=document.getElementById('dz');
+document.addEventListener('dragover',e=>{e.preventDefault();dz.classList.add('act');});
+document.addEventListener('dragleave',e=>{if(!e.relatedTarget)dz.classList.remove('act');});
+document.addEventListener('drop',e=>{e.preventDefault();dz.classList.remove('act');const f=e.dataTransfer?.files[0];if(f)parse(f);});
+init();
+</script>
